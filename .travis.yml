@@ -11,6 +11,10 @@ before_script:
   - psql -c "create database travis_ci_test;" -U postgres
   - cp config/database.travis.yml config/database.yml
   - cp config/secrets.travis.yml config/secrets.yml
+branches:
+  only:
+    - deploy
+    - master
 deploy:
   - provider: opsworks
     access_key_id: AKIAIMMZNI5YBHU4WBYA
