@@ -8,10 +8,6 @@ Bundler.require(*Rails.groups)
 
 module EntitlementServer
   class Application < Rails::Application
-    development
-     config.generators do |g|
-    g.test_framework :minitest, fixutre: false
-  end 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -26,5 +22,9 @@ module EntitlementServer
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    
+    config.generators do |g|
+      g.test_framework :minitest, fixutre: false
+    end
   end
 end
