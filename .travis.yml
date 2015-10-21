@@ -1,24 +1,32 @@
-  sudo: false
-  language: ruby
-  rvm:
-    - 2.2.3
-  cache: bundler
-  addons:
-    postgresql: "9.4"
-  before_script:
-    - psql -c "create database travis_ci_test;" -U postgres
-    - cp config/database.travis.yml config/database.yml
-    - cp config/secrets.travis.yml config/secrets.yml
-  deploy:
-    provider: opsworks
-    access_key_id: ["AWS_ACCESS_KEY_ID"]
+sudo: false
+language: ruby
+rvm:
+  - 2.2.3
+cache: bundler
+addons:
+  code_climate:
+    repo_token: 212a4731d9077e8b4227d940d95693c4c8fcfd5cee2f70623aab445206f05bdf
+  postgresql: '9.4'
+before_script:
+  - psql -c "create database travis_ci_test;" -U postgres
+  - cp config/database.travis.yml config/database.yml
+  - cp config/secrets.travis.yml config/secrets.yml
+deploy:
+  - provider: opsworks
+    access_key_id: AKIAIMMZNI5YBHU4WBYA
     secret_access_key:
-      secure: ["AWS_SECRET_ACCESS_KEY"]
-    app-id: ["AWS_APP_ID"]
+      secure: S8zNzKfOXkEfKH0UJIgbxH0Y4qBkKPSbhCJ7tKLQciS8JbgyC3K98irf7uvzp6t1QOst05GdzzQ3g6Qy7zYJSf6oBW1zYk6Qocrl6GM9npvZ94lFkTX+tbLQp9oHgWEg1tGEO/+yZtAPWPrjg7at0/lGGCSUB8sswU93YuhGpMvmIjGxuzcYZ1r0HKz6EKhFjYr7FfF42cK80/5csiwEaryWLMlFZiV+bPsHumW2mLD6b24KZe4E3xPSdULMXAJny0xqfDaZ+e05ZMHYqZKijQgGkFWXJy/4eg4e2FPU/qFoGL6IoxPTIXK9twgs2QkbNmXUYr/Ha6ELY1YTUEgAhWfYEvLobG2dGAevSlLuS1JgqAd0KgEN9gqbIlJA3DTmlZlLMJI2wIFyONdpkgU/XNLGPZOMFkCvjpkXPE4xDneLIJ0ntp36nf2xD1T375vgSN1lqRQMZ4xHIusER2pmbcf27p+9NgdpPX9BtgM7WGQe8eqi0MTB0AbXLDhWrZnNC0QwSTV+jseXPZbTNlee5YgEuZNHHAsFc/TVBBtGpg44SS2AoQv0u0GBozWzNOcB/dyBJ4VFd6Fph+J5N3C1DyhuQw0b0OQjZpXtjmbPGUrKXylVV3BH4SPDrNdqO60w1Vpne/j4ubmK504Cm4PayVxKSoJGg8C9Bq7pHhtPQ9w=
+    app-id: 157075a2-1a57-43e5-bdbd-87e1fce7c01c
     on:
-      repo: ["GITHUB_REPO_PATH"]
+      repo: wavetronix/entitlement_server
+      branch: develop
+      rvm: 2.2.3
+  - provider: opsworks
+    access_key_id: AKIAIMMZNI5YBHU4WBYA
+    secret_access_key:
+      secure: S8zNzKfOXkEfKH0UJIgbxH0Y4qBkKPSbhCJ7tKLQciS8JbgyC3K98irf7uvzp6t1QOst05GdzzQ3g6Qy7zYJSf6oBW1zYk6Qocrl6GM9npvZ94lFkTX+tbLQp9oHgWEg1tGEO/+yZtAPWPrjg7at0/lGGCSUB8sswU93YuhGpMvmIjGxuzcYZ1r0HKz6EKhFjYr7FfF42cK80/5csiwEaryWLMlFZiV+bPsHumW2mLD6b24KZe4E3xPSdULMXAJny0xqfDaZ+e05ZMHYqZKijQgGkFWXJy/4eg4e2FPU/qFoGL6IoxPTIXK9twgs2QkbNmXUYr/Ha6ELY1YTUEgAhWfYEvLobG2dGAevSlLuS1JgqAd0KgEN9gqbIlJA3DTmlZlLMJI2wIFyONdpkgU/XNLGPZOMFkCvjpkXPE4xDneLIJ0ntp36nf2xD1T375vgSN1lqRQMZ4xHIusER2pmbcf27p+9NgdpPX9BtgM7WGQe8eqi0MTB0AbXLDhWrZnNC0QwSTV+jseXPZbTNlee5YgEuZNHHAsFc/TVBBtGpg44SS2AoQv0u0GBozWzNOcB/dyBJ4VFd6Fph+J5N3C1DyhuQw0b0OQjZpXtjmbPGUrKXylVV3BH4SPDrNdqO60w1Vpne/j4ubmK504Cm4PayVxKSoJGg8C9Bq7pHhtPQ9w=
+    app-id: d8f7b51a-3c15-429a-9ec4-5b82488bdfaf
+    on:
+      repo: wavetronix/entitlement_server
       branch: master
       rvm: 2.2.3
-  notifications:
-    slack:
-      secure: ["SLACK_TOKEN"]
