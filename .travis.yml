@@ -1,0 +1,24 @@
+  sudo: false
+  language: ruby
+  rvm:
+    - 2.2.3
+  cache: bundler
+  addons:
+    postgresql: "9.4"
+  before_script:
+    - psql -c "create database travis_ci_test;" -U postgres
+    - cp config/database.travis.yml config/database.yml
+    - cp config/secrets.travis.yml config/secrets.yml
+  deploy:
+    provider: opsworks
+    access_key_id: ["AWS_ACCESS_KEY_ID"]
+    secret_access_key:
+      secure: ["AWS_SECRET_ACCESS_KEY"]
+    app-id: ["AWS_APP_ID"]
+    on:
+      repo: ["GITHUB_REPO_PATH"]
+      branch: master
+      rvm: 2.2.3
+  notifications:
+    slack:
+      secure: ["SLACK_TOKEN"]
