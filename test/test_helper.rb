@@ -16,19 +16,19 @@ Dir[File.expand_path("test/factories/**/*.rb")].each { |file| require file }
 
 Minitest::Reporters.use! Minitest::Reporters::DefaultReporter.new(color: true)
 
-OmniAuth.config.test_mode = true
-
-identity_hash = {
-  provider: "identity",
-  uid: "9372",
-  info: {
-    first_name: "Bob",
-    last_name: "Billy",
-    email: "bibblybob@bob.com"
-  }
-}
-
-OmniAuth.config.add_mock(:identity, identity_hash)
+# OmniAuth.config.test_mode = true
+#
+# identity_hash = {
+#   provider: "identity",
+#   uid: "9372",
+#   info: {
+#     first_name: "Bob",
+#     last_name: "Billy",
+#     email: "bibblybob@bob.com"
+#   }
+# }
+#
+# OmniAuth.config.add_mock(:identity, identity_hash)
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
