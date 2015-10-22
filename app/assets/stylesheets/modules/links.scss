@@ -1,0 +1,38 @@
+@import "foundation_and_overrides";
+@import "globals/all";
+
+.button.delete {
+  background-color: $delete-color;
+
+  &:hover {
+    background-color: scale-color($delete-color, $lightness: -14%);
+  }
+}
+
+.delete {
+  color: $delete-color;
+
+  &:hover {
+    color: scale-color($delete-color, $lightness: -14%);
+  }
+}
+
+.offsite {
+  white-space: nowrap;
+
+  &::after {
+    content: "\f08e";
+    font-family: FontAwesome;
+    padding-left: 0.2em;
+  }
+}
+
+.identity {
+  white-space: nowrap;
+
+  &::before {
+    content: "\f007";
+    font-family: FontAwesome;
+    padding-right: 0.3em;
+  }
+}

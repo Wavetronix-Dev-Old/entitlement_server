@@ -1,0 +1,23 @@
+@mixin declare-font-face($font-family, $font-filename, $font-weight: normal, $font-style: normal, $font-stretch: normal) {
+  @font-face {
+    font-family: "#{$font-family}";
+    src: url("//com-wavetronix-assets.s3.amazonaws.com/fonts/#{$font-filename}.eot");
+    src: url("//com-wavetronix-assets.s3.amazonaws.com/fonts/#{$font-filename}.eot?#iefix") format("embedded-opentype"),
+         url("//com-wavetronix-assets.s3.amazonaws.com/fonts/#{$font-filename}.woff") format("woff");
+    font-weight: $font-weight;
+    font-style: $font-style;
+    font-stretch: $font-stretch;
+  }
+}
+
+@include declare-font-face("Klavika", "KlavikaWebBasicLight");
+@include declare-font-face("Klavika", "KlavikaWebBasicLightItalic", normal, italic);
+@include declare-font-face("Klavika", "KlavikaWebBasicMedium", bold);
+@include declare-font-face("Klavika", "KlavikaWebBasicMediumItalic", bold, italic);
+
+@include declare-font-face("Roadgeek Series B", "rg2014b-webfont");
+@include declare-font-face("Roadgeek Series C", "rg2014c-webfont");
+@include declare-font-face("Roadgeek Series D", "rg2014d-webfont");
+@include declare-font-face("Roadgeek Series EEM", "rg2014eem-webfont");
+@include declare-font-face("Roadgeek Series EM", "rg2014em-webfont");
+@include declare-font-face("Roadgeek Series F", "rg2014f-webfont");
