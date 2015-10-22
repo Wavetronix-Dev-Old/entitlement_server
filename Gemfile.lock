@@ -219,6 +219,8 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
+    tunnelss (0.1.3)
+      eventmachine
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
@@ -267,6 +269,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
+  tunnelss
   turbolinks
   uglifier (>= 1.3.0)
   unicorn
