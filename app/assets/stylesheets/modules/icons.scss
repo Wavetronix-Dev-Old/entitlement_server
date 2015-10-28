@@ -1,0 +1,24 @@
+@import "foundation_and_overrides";
+@import "globals/all";
+
+.file-icon {
+  white-space: nowrap;
+
+  &::before {
+    content: "\f016";
+    font-family: FontAwesome;
+    padding-right: 0.5em;
+  }
+
+  &.application-pdf {
+    &::before {
+      content: "\f1c1";
+    }
+  }
+
+  &.application-zip {
+    &::before {
+      content: "\f1c6";
+    }
+  }
+}

@@ -1,0 +1,24 @@
+<header class="site-header">
+  <nav class="tab-bar">
+    <section class="left-small">
+      <%= link_to content_tag(:span), nil, class: "left-off-canvas-toggle menu-icon" %>
+    </section>
+    <section class="middle tab-bar-section">
+      <h1><%= link_to image_tag("nav_logo.svg", alt: "Wavetronix"), root_path, class: "top-bar-site-icon" %> <small>entitlement server</small></h1>
+    </section>
+  </nav>
+
+  <aside class="left-off-canvas-menu">
+    <ul class="off-canvas-list">
+      <% if current_user %>
+        <li><%= link_to "collections", root_path %></li>
+        <li><%= link_to "users", users_path %></li>
+        <li><%= link_to "groups", root_path %></li>
+        <li><%= link_to "settings", root_path %></li>
+        <li><%= link_to "logout of #{current_user.name}", sign_out_path %></li>
+      <% else %>
+        <li><%= link_to "sign in", sign_in_path %></li>
+      <% end %>
+    </ul>
+  </aside>
+</header>

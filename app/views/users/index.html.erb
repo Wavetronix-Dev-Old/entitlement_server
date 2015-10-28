@@ -1,0 +1,27 @@
+<% content_for :title, "Users" %>
+
+<h1>
+  Users
+  <small>
+    <%= link_to new_identity_path, title: "Create a new user" do %>
+    <span class="fa fa-plus-square-o"></span>
+  <% end %>
+  </small>
+</h1>
+
+<h4>users</h4>
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="25"></th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th width="25"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @users %>
+  </tbody>
+</table>
+

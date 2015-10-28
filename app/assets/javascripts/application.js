@@ -12,5 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require foundation
 //= require_tree .
+
+$(function(){
+  document.addEventListener("page:restore", function () {
+    app.init();
+  });
+
+  $(document).foundation();
+});

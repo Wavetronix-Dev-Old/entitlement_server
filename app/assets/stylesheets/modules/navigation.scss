@@ -1,0 +1,42 @@
+@import "foundation_and_overrides";
+@import "globals/all";
+
+$call-to-action-background-color: $anchor-font-color;
+$call-to-action-font-color: $sub-nav-active-color;
+
+.top-bar-site-icon {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.wtx-sub-nav {
+  @include sub-nav();
+
+  dt {
+    margin-left: 0;
+
+    & + dd {
+      margin-left: rem-calc(10);
+    }
+  }
+
+  dd {
+    margin: rem-calc(15 0 0 5);
+  }
+
+  a {
+    padding: rem-calc(3 8) !important;
+  }
+
+  .call-to-action {
+    background-color: $call-to-action-background-color;
+    border-radius: $sub-nav-border-radius;
+    color: $sub-nav-active-color;
+    cursor: $sub-nav-active-cursor;
+
+    &:hover {
+      background-color: scale-color($call-to-action-background-color, $lightness: -14%);
+      color: $sub-nav-active-color;
+    }
+  }
+}
