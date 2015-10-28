@@ -1,7 +1,9 @@
 class IdentitiesController < ApplicationController
   before_action :authenticate!, only: [:index, :show]
   before_action :find_identity
-  require 'bcrypt'
+  before_action :find_user
+
+  # require 'bcrypt'
 
   def new
     @identity = env["omniauth.identity"]
@@ -11,16 +13,21 @@ class IdentitiesController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
     if @identity.update_attributes(identity_params)
-      @identity = Identity.find(1)
-      @identity.password = "newpassword"
-      @identity.password_confirmation = "newpassword"
-      @identity.save
-      redirect_to edit_identity_path(current_user.uid), notice: %(Updated "#{@identity.first_name}" successfully.)
+      @user.first_name = @identity.first_name
+      @user.last_name = @identity.last_name
+      @user.email = @identity.email
+      @user.save
+      redirect_to users_path, notice: %(Updated "#{@identity.first_name}" successfully.)
     else
       render :edit
     end
+  end
+
+  def destroy
+    @identity.destroy
+    @user.destroy
+    redirect_to users_path
   end
 
   def authentication_failure
@@ -30,10 +37,18 @@ class IdentitiesController < ApplicationController
   private
 
   def identity_params
-    params.require(:identity).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:identity).permit(:first_name, :last_name, :email, :uid, :auth_token, :provider)
+  end
+
+  def user_params
+    params.require(@user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
 
   def find_identity
     @identity = Identity.find(params[:id]) if params[:id]
+  end
+
+  def find_user
+    @user = User.find(params[:id]) if params[:id]
   end
 end

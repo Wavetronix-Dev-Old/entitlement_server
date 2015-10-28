@@ -1,0 +1,16 @@
+<% content_for :title, "Wavetronix ID" %>
+
+<section class="page shadow">
+    <div class="column grid_4">
+        <h2>Reset your password</h2>
+        <p>You can reset the password for your Wavetronix ID by providing some information.</p>
+    </div> <!-- .column -->
+    <div class="column grid_8">
+        <%= error_handling_form_for @identity, :url => identities_password_reset_path(params[:id]) do |f| %>
+            <p class="intro">Enter your new password below.</p>
+            <%= f.password_field :password %>
+            <%= f.password_field :password_confirmation %>
+            <p class="form_buttons"><%= submit_tag "Update password", :class => "button default" %></p>
+        <% end %>
+    </div> <!-- .column -->
+</section>

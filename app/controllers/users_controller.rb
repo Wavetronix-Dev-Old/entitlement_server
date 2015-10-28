@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.order("id").all
-    @identity = Identity.all
+    @identities = Identity.order("id").all
   end
 
   def show
@@ -23,6 +23,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @identity = Identity.find(params[:id]) if params[:id]
+    @identity.destroy
     @user.destroy
     redirect_to users_path
   end

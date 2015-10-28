@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   resources :identities
   resources :users
 
+  namespace :identities do
+    resources :password_resets
+  end
+
   root to: "collections#index"
 
 end
