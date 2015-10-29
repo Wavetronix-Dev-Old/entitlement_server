@@ -8,6 +8,7 @@ class Identity < OmniAuth::Identity::Models::ActiveRecord
                     uniqueness: { case_sensitive: false },
                     format: { with: /\A^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$\Z/i }
 
+
   ## PASSWORD RESET METHODS
   def send_password_reset
     generate_token :password_reset_token
@@ -21,6 +22,5 @@ class Identity < OmniAuth::Identity::Models::ActiveRecord
       self[column] = SecureRandom.urlsafe_base64
     end while Identity.exists?(column => self[column])
   end
-
 
 end

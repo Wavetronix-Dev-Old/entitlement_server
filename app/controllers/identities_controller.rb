@@ -17,6 +17,8 @@ class IdentitiesController < ApplicationController
       @user.first_name = @identity.first_name
       @user.last_name = @identity.last_name
       @user.email = @identity.email
+      @user.company = @identity.company
+      @user.job_title = @identity.job_title
       @user.save
       redirect_to users_path, notice: %(Updated "#{@identity.first_name}" successfully.)
     else
@@ -37,11 +39,11 @@ class IdentitiesController < ApplicationController
   private
 
   def identity_params
-    params.require(:identity).permit(:first_name, :last_name, :email, :uid, :auth_token, :provider)
+    params.require(:identity).permit(:first_name, :last_name, :email, :uid, :auth_token, :provider, :company, :job_title)
   end
 
   def user_params
-    params.require(@user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(@user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :company, :job_title)
   end
 
   def find_identity

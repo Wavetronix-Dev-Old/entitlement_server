@@ -9,13 +9,14 @@
   </small>
 </h1>
 
-<h4>users</h4>
 <table width="100%">
   <thead>
     <tr>
       <th width="25"></th>
       <th>Name</th>
       <th>Email</th>
+      <th>Company</th>
+      <th>Job Title</th>
       <th>Role</th>
       <th width="25"></th>
     </tr>
@@ -25,3 +26,8 @@
   </tbody>
 </table>
 
+<hr/>
+<h4>identities</h4>
+<% @identities.each do |i| %>
+  <p><%= i.id %> - <%= i.first_name %> <%= i.last_name %> | <%= i.company %> | <%= i.job_title %></p>
+<% end %>
