@@ -1,6 +1,7 @@
 sudo: false
 language: ruby
 rvm:
+  - 2.2.2
   - 2.2.3
 cache: bundler
 addons:
@@ -29,4 +30,4 @@ deploy:
     on:
       repo: wavetronix/entitlement_server
       branch: master
-      rvm: 2.2.3
+      rvm: 2.2.2
