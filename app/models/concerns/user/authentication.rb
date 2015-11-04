@@ -11,6 +11,20 @@ class User < ActiveRecord::Base
         find_by(provider: auth["provider"], uid: auth["uid"]) || create_with_omniauth(auth)
       end
 
+      # def from_omniauth(auth)
+      #   user = find_by(provider: auth["provider"], uid: auth["uid"]) || User.new
+
+      #   user.provider ||= auth["provider"]
+      #   user.uid ||= auth["uid"]
+      #   user.first_name = auth["info"]["first_name"]
+      #   user.last_name = auth["info"]["last_name"]
+      #   user.email = auth["info"]["email"]
+      #   user.location = auth["info"]["location"]
+      #   user.description = auth["info"]["description"]
+
+      #   user.save!
+      # end
+
       def create_with_omniauth(auth)
         create! do |user|
           user.provider = auth["provider"]
@@ -18,10 +32,20 @@ class User < ActiveRecord::Base
           user.first_name = auth["info"]["first_name"]
           user.last_name = auth["info"]["last_name"]
           user.email = auth["info"]["email"]
-          user.company = auth["info"]["email"]
-          user.job_title = auth["info"]["job_title"]
+          user.location = auth["info"]["location"]
+          user.description = auth["info"]["description"]
         end
       end
+
+      # def assign_from_omniauth(auth)
+      #   provider ||= auth["provider"]
+      #   uid ||= auth["uid"]
+      #   first_name = auth["info"]["first_name"]
+      #   last_name = auth["info"]["last_name"]
+      #   email = auth["info"]["email"]
+      #   location = auth["info"]["location"]
+      #   description = auth["info"]["description"]
+      # end
     end
 
     private

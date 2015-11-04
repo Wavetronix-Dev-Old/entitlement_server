@@ -4,6 +4,6 @@ Factory.define :user do |u|
   u.first_name "Steven"
   u.last_name "Tyler%d"
   u.email { |o| "#{o.name.parameterize('.')}@example.com" }
-  u.company "Aerosmith"
-  u.job_title "Singer"
+  u.location "Aerosmith"
+  u.description "Singer"
 end

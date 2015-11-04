@@ -1,44 +1,20 @@
-<!-- <tr>
-  <td>
-    <%= link_to user_path(user), class: "delete", data: { confirm: %(Are you sure you want to delete "#{user.name}?" This cannot be undone.) }, method: :delete, title: %(Delete "#{user.name}") do %>
-      <span class="fa fa-trash-o"></span>
-    <% end if current_user != user %>
-    <%= user.id %>
-  </td>
-  <td>
-    <%= user.name %>
-  </td>
-  <td>
-    <%= user.email %>
-  </td>
-  <td>
-    <%= user.company %>
-  </td>
-  <td>
-    <%= user.job_title %>
-  </td>
-  <td>
-    role goes here
-  </td>
-  <td>
-    <%= link_to edit_identity_path(user.uid), title: %(Edit "#{user.name}") do %>
-      <span class="fa fa-edit"></span>
-    <% end %>
-  </td>
-</tr> -->
-
 <div class="row">
-  <div class="small-8 columns">
-    <div class="row">
-      <div class="small-12 medium-6 columns">
-        <strong><%= user.name %></strong>
-      </div>
-      <div class="small-12 medium-6 columns">
-        <%= user.email %>
-      </div>
-    </div>
+  <div class="medium-3 columns">
+    <%= user.email %>
   </div>
-  <div class="small-4 columns text-right">
+  <div class="medium-4 columns">
+    <%= user.location %> <br/>
+    <%= user.description %>
+  </div>
+  <div class="medium-2 columns">
+    <% user.roles.each do |role| %>
+      <span class="secondary label radius">
+        <%= role.name %>
+      </span>
+    <% end %>
+  </div>
+
+  <div class="medium-3 columns text-right">
     <ul class="button-group radius">
       <li>
         <%= link_to edit_identity_path(user.uid), class: 'button tiny', title: %(Edit "#{user.name}") do %>
@@ -55,3 +31,4 @@
     </ul>
   </div>
 </div>
+

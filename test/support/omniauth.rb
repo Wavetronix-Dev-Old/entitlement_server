@@ -6,7 +6,9 @@ identity_hash = {
   info: {
     first_name: "Bob",
     last_name: "Billy",
-    email: "bibblybob@bob.com"
+    email: "bibblybob@bob.com",
+    location: "Billy Bob's Emporium",
+    description: "Owner, manager and all around good guy"
   }
 }
 

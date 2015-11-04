@@ -9,25 +9,21 @@
   </small>
 </h1>
 
-<table width="100%">
-  <thead>
-    <tr>
-      <th width="25"></th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Company</th>
-      <th>Job Title</th>
-      <th>Role</th>
-      <th width="25"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= render @users %>
-  </tbody>
-</table>
+<div class="row hide-for-small div-header">
+  <div class="medium-3 columns">
+    username
+  </div>
+  <div class="medium-4 columns">
+    description
+  </div>
+  <div class="medium-2 columns">
+    roles
+  </div>
+  <div class="medium-3 columns">
+    <p></p>
+  </div>
+</div>
 
-<hr/>
-<h4>identities</h4>
-<% @identities.each do |i| %>
-  <p><%= i.id %> - <%= i.first_name %> <%= i.last_name %> | <%= i.company %> | <%= i.job_title %></p>
-<% end %>
+<div class="users-list no-bullet">
+  <%= render @users %>
+</div>
