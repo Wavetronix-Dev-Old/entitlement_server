@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   post "/auth/:provider/callback", to: "sessions#create"
   get "/sign_out", to: "sessions#destroy", as: :sign_out
 
-  resources :identities
-  resources :users
+  resources :identities, :roles, :users
 
   namespace :identities do
     resources :password_resets

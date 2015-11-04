@@ -1,9 +1,11 @@
 class IdentitiesController < ApplicationController
-  before_action :authenticate!, only: [:index, :show]
+  skip_before_action :authenticate!, only: [:new]
+
   before_action :find_identity
   before_action :find_user
 
-  # require 'bcrypt'
+  def show
+  end
 
   def new
     @identity = env["omniauth.identity"]

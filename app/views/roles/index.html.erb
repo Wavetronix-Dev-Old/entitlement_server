@@ -1,0 +1,12 @@
+<% content_for :title, 'Roles' %>
+<h1>
+  Roles
+  <small>
+    <%= link_to new_role_path do %>
+      <span class="fa fa-plus-square-o"></span>
+    <% end %>
+  </small>
+</h1>
+<ul class="no-bullet">
+  <%= render @roles %>
+</ul>

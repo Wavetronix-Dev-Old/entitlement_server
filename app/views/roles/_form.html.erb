@@ -1,0 +1,13 @@
+<%= form_for @role do |f| %>
+  <%= content_tag :div, class: 'alert-box radius alert' do %>
+    <h4><%= pluralize @role.errors.count, 'error' %> kept this form from submitting:</h4>
+    <ul>
+      <% @role.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end if @role.errors.any? %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit class: 'button radius' %>
+<% end %>

@@ -1,0 +1,21 @@
+<li class="row">
+  <div class="small-4 columns">
+    <%= role.name %>
+  </div>
+  <div class="small-8 columns text-right">
+    <ul class="button-group">
+      <li>
+        <%= link_to edit_role_path(role), class: 'button tiny' do %>
+          <span class="fa fa-edit"></span>
+          Edit
+        <% end %>
+      </li>
+      <li>
+        <%= link_to role_path(role), class: 'button tiny delete', data: { confirm: %(Are you sure you want to delete "#{role.name}"? This cannot be undone.) }, method: :delete do %>
+          <span class="fa fa-trash-o"></span>
+          Delete
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</li>
