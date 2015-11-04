@@ -1,6 +1,17 @@
 require "test_helper"
 
 describe IdentitiesController do
+  let(:user) { Factory :user }
+
+  before do
+    sign_in user
+  end
+
+  it "gets show" do
+    get :show, id: user.uid
+    must_respond_with :success
+  end
+
   it "gets new" do
     get :new
     must_respond_with :success

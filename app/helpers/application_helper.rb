@@ -1,11 +1,9 @@
 module ApplicationHelper
-
   def full_title(page_title = nil)
     if page_title.present?
-      "Wavetronix - #{page_title}"
+      "Entitlement Server - #{page_title}"
     else
-      "Wavetronix"
+      "Entitlement Server"
     end
   end
-
 end

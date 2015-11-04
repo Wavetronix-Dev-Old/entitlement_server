@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include Authentication
+  rolify
 
   validates :uid,
             :provider,
