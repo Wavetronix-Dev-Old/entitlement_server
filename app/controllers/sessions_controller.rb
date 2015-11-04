@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :authenticate!, only: [:new, :create]
+
   def new
   end
 
@@ -10,12 +12,12 @@ class SessionsController < ApplicationController
     if uri
       redirect_to uri
     else
-      redirect_to root_path
+      redirect_to identity_path(user)
     end
   end
 
   def destroy
-    cookies[:auth_token] = nil
+    cookies.delete :auth_token
     redirect_to request.referer rescue redirect_to sign_in_path
   end
 end

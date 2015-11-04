@@ -42,7 +42,10 @@ Rails.application.configure do
   config.serve_static_files = true
   config.assets.prefix = "/dev-assets"
 
+  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+  # config.force_ssl = true
+
   # Add Rack::LiveReload to the bottom of the middleware stack with the
   # default options.
-  config.middleware.use Rack::LiveReload
+  config.middleware.use Rack::LiveReload, no_swf: true
 end
