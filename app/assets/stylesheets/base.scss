@@ -35,6 +35,10 @@ h1 {
   padding-top: $default-vertical-spacing;
 }
 
+.site-header {
+  margin-bottom: rem-calc(20);
+}
+
 .site-footer {
   color: $aluminum;
   padding-top: rem-calc(20);

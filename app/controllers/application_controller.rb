@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 
   def user_not_authorized(exception)
     policy_name = exception.policy.class.to_s.humanize(capitalize: false)
-    flash[:error] = "The #{policy_name} prohibits you from performing #{exception.query} on #{exception.record}."
+    flash[:error] = "The #{policy_name.underscore.humanize} prohibits you from performing #{exception.query} on #{exception.record}."
     redirect_to request.referrer || root_path
   end
 

@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+##
+# Create default roles
+
+%w[
+  admin
+  roles
+  users
+].each do |role|
+  Role.find_or_create_by! name: role
+end

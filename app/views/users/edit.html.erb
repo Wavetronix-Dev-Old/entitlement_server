@@ -1,0 +1,24 @@
+<% content_for :title, "Edit #{@user.name}" %>
+<h1><%= "Edit #{@user.name}" %></h1>
+<h2 class="subheader"><%= @user.email %></h2>
+
+<h2>Roles</h2>
+<%= form_for @user do |f| %>
+  <ul class="no-bullet">
+    <%= f.collection_check_boxes :role_ids, Role.order(:name), :id, :name do |cb| %>
+      <li>
+        <%= cb.check_box %>
+        <%= cb.label %>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.submit class: 'button radius expand' %>
+    </div>
+    <div class="medium-6 columns">
+      <%= link_to 'Delete User', user_path(@user), class: 'button radius expand delete', data: { confirm: %(Are you sure you want to delete "#{@user.name}?" This cannot be undone.) }, method: :delete %>
+    </div>
+  </div>
+<% end %>

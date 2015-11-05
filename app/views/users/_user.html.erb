@@ -17,7 +17,7 @@
   <div class="medium-3 columns text-right">
     <ul class="button-group radius">
       <li>
-        <%= link_to edit_identity_path(user.uid), class: 'button tiny', title: %(Edit "#{user.name}") do %>
+        <%= link_to edit_user_path(user), class: 'button tiny', title: %(Edit "#{user.name}") do %>
           <span class="fa fa-edit"></span>
           Edit
         <% end %>
@@ -31,4 +31,3 @@
     </ul>
   </div>
 </div>
-

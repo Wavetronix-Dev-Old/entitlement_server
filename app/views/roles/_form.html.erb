@@ -9,5 +9,23 @@
   <% end if @role.errors.any? %>
   <%= f.label :name %>
   <%= f.text_field :name %>
-  <%= f.submit class: 'button radius' %>
+
+  <h2>Users</h2>
+  <ul class="no-bullet">
+    <%= f.collection_check_boxes :user_ids, User.order(:last_name, :first_name), :id, :name do |cb| %>
+      <li>
+        <%= cb.check_box %>
+        <%= cb.label %>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.submit class: 'button radius expand' %>
+    </div>
+    <div class="medium-6 columns">
+      <%= link_to 'Delete Role', role_path(@role), class: 'button radius expand delete', data: { confirm: %(Are you sure you want to delete "#{@role.name}?" This cannot be undone.) }, method: :delete %>
+    </div>
+  </div>
 <% end %>

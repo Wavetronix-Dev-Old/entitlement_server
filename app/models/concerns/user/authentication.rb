@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
     extend ActiveSupport::Concern
 
     included do
-      before_save { generate_token :auth_token }
+      before_create { generate_token :auth_token }
     end
 
     module ClassMethods

@@ -1,21 +1,23 @@
 class UsersController < ApplicationController
-  before_action :authenticate!
   before_action :find_user
+  after_action :verify_authorized
 
   def index
     @users = User.order("id").all
-    @identities = Identity.order("id").all
+    authorize :user
   end
 
   def show
-    @user = User.find(params[:id])
+    authorize @user
   end
 
   def edit
+    authorize @user
   end
 
-   def update
-    if @user.update_attributes(user_params)
+  def update
+    authorize @user
+    if @user.update(user_params)
       redirect_to users_path, notice: %(Updated "#{@user.name}" successfully.)
     else
       render :edit
@@ -23,20 +25,18 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @identity = Identity.find(params[:id]) if params[:id]
-    @identity.destroy
+    authorize @user
     @user.destroy
     redirect_to users_path
   end
 
-  private
+private
 
   def find_user
     @user = User.find(params[:id]) if params[:id]
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :location, :description)
+    params.require(:user).permit({role_ids: []})
   end
-
 end
