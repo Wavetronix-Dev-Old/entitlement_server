@@ -1,0 +1,12 @@
+@import "foundation_and_overrides";
+@import "globals/all";
+
+.users-list {
+  .row {
+    padding-top: 5px;
+    border-bottom: 1px solid $smoke;
+  }
+  .row:nth-child(even) {
+    background: $snow;
+  }
+}

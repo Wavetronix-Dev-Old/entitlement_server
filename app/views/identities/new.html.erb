@@ -29,6 +29,17 @@
 
   <div class="row">
     <div class="medium-6 columns">
+      <%= label_tag "Company" %>
+      <%= text_field_tag :location, @identity.try(:location) %>
+    </div>
+    <div class="medium-6 columns">
+      <%= label_tag "Job Title" %>
+      <%= text_field_tag :description, @identity.try(:description) %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-6 columns">
       <%= label_tag :password %>
       <%= password_field_tag :password %>
     </div>

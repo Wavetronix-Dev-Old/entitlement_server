@@ -1,0 +1,9 @@
+@import "foundation_and_overrides";
+@import "globals/all";
+
+.div-header {
+  padding: 3px 0px 1px 0px;
+  text-transform: uppercase;
+  border-bottom: 1px solid $aluminum;
+  color: $aluminum;
+}

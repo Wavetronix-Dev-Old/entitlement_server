@@ -8,7 +8,7 @@ describe IdentitiesController do
   end
 
   it "gets show" do
-    get :show, id: user.uid
+    get :show, id: user
     must_respond_with :success
   end
 
