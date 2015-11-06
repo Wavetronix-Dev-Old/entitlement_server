@@ -10,15 +10,17 @@
   <%= f.label :name %>
   <%= f.text_field :name %>
 
-  <h2>Users</h2>
-  <ul class="no-bullet">
-    <%= f.collection_check_boxes :user_ids, User.order(:last_name, :first_name), :id, :name do |cb| %>
-      <li>
-        <%= cb.check_box %>
-        <%= cb.label %>
-      </li>
-    <% end %>
-  </ul>
+  <fieldset>
+    <legend>Users</legend>
+    <ul class="no-bullet">
+      <%= f.collection_check_boxes :user_ids, User.order(:last_name, :first_name), :id, :name do |cb| %>
+        <li>
+          <%= cb.check_box %>
+          <%= cb.label %>
+        </li>
+      <% end %>
+    </ul>
+  </fieldset>
 
   <div class="row">
     <div class="medium-6 columns">
