@@ -16,8 +16,12 @@
   .row {
     padding-top: 5px;
     border-bottom: 1px solid $smoke;
+    :hover {
+      color: $aluminum;
+    }
   }
   .row:nth-child(even) {
     background: $snow;
   }
 }
+

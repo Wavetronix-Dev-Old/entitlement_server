@@ -50,12 +50,19 @@
         <% end %>
         <li><label>My Account</label></li>
         <li>
+          <%= link_to roles_path do %>
+            <span class="fa fa-fw fa-user-secret"></span>
+            Roles
+          <% end %>
+        </li>
+        <li class="hide-for-medium-up"><label>My Account</label></li>
+        <li class="hide-for-medium-up">
           <%= link_to edit_identity_path(current_user.uid) do %>
             <span class="fa fa-fw fa-pencil"></span>
             Edit
           <% end %>
         </li>
-        <li>
+        <li class="hide-for-medium-up">
           <%= link_to sign_out_path do %>
             <span class="fa fa-fw fa-sign-out"></span>
             Sign out
