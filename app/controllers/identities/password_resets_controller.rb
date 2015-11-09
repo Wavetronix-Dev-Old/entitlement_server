@@ -1,5 +1,6 @@
 module Identities
   class PasswordResetsController < ApplicationController
+    skip_before_action :authenticate!
 
     # GET /identities/password_resets/new
     def new

@@ -48,13 +48,6 @@
             <% end %>
           </li>
         <% end %>
-        <li><label>My Account</label></li>
-        <li>
-          <%= link_to roles_path do %>
-            <span class="fa fa-fw fa-user-secret"></span>
-            Roles
-          <% end %>
-        </li>
         <li class="hide-for-medium-up"><label>My Account</label></li>
         <li class="hide-for-medium-up">
           <%= link_to edit_identity_path(current_user.uid) do %>

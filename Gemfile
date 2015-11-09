@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # ruby '2.2.3'
 
+gem "aws-ses", "~> 0.6.0", :require => 'aws/ses'
 gem 'rails', '4.2.4'
 gem 'bcrypt', '~> 3.1.7'
 gem 'coffee-rails', '~> 4.1.0'

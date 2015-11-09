@@ -8,7 +8,7 @@
     <div class="column grid_8">
         <%= form_tag identities_password_resets_path, :method => :post do %>
             <p class="intro">To reset your password, begin by entering your email address.</p>
-            <h4><%= label_tag :email, "Wavetronix email" %></h4>
+            <h4><%= label_tag :email, "Email" %></h4>
             <p><%= email_field_tag :email, params[:email], :class => "grid_4", :placeholder => "name@example.com" %></p>
             <p class="form_buttons"><%= submit_tag "Next", :class => "button default" %> <%= link_to "Cancel", sign_in_path, :class => "button" %></p>
         <% end %>
