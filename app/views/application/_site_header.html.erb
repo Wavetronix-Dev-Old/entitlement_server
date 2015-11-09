@@ -9,31 +9,45 @@
       <h1><%= link_to image_tag('nav_logo.svg', alt: 'Wavetronix'), root_path, class: 'top-bar-site-icon' %></h1>
     </section>
   </nav>
-  
+
   <%= render "flash" %>
 
   <% if current_user %>
     <aside class="left-off-canvas-menu">
       <ul class="off-canvas-list">
         <li><label>DPS Entitlement Server</label></li>
-        <li>
-          <%= link_to root_path do %>
-            <span class="fa fa-fw fa-cube"></span>
-            Collections
-          <% end %>
-        </li>
-        <li>
-          <%= link_to users_path do %>
-            <span class="fa fa-fw fa-user"></span>
-            Users
-          <% end %>
-        </li>
-        <li>
-          <%= link_to roles_path do %>
-            <span class="fa fa-fw fa-user-secret"></span>
-            Roles
-          <% end %>
-        </li>
+        <% if true #policy(:collection).manage? %>
+          <li>
+            <%= link_to nil do %>
+              <span class="fa fa-fw fa-cube"></span>
+              Collections
+            <% end %>
+          </li>
+        <% end %>
+        <% if policy(:identity).manage? %>
+          <li>
+            <%= link_to identities_path do %>
+              <span class="fa fa-fw fa-shield"></span>
+              Identities
+            <% end %>
+          </li>
+        <% end %>
+        <% if policy(:user).manage? %>
+          <li>
+            <%= link_to users_path do %>
+              <span class="fa fa-fw fa-user"></span>
+              Users
+            <% end %>
+          </li>
+        <% end %>
+        <% if policy(:role).manage? %>
+          <li>
+            <%= link_to roles_path do %>
+              <span class="fa fa-fw fa-user-secret"></span>
+              Roles
+            <% end %>
+          </li>
+        <% end %>
         <li><label>My Account</label></li>
         <li>
           <%= link_to edit_identity_path(current_user.uid) do %>

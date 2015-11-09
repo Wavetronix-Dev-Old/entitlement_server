@@ -6,7 +6,10 @@ class SessionsController < ApplicationController
 
   def create
     user = User.from_omniauth(request.env["omniauth.auth"])
-    cookies.permanent[:auth_token] = user.auth_token
+    cookies[:auth_token] = {
+      value: user.auth_token,
+      expires: 30.days.from_now
+    }
     uri = session[:referer]
     session[:referer] = nil
     if uri
@@ -18,6 +21,6 @@ class SessionsController < ApplicationController
 
   def destroy
     cookies.delete :auth_token
-    redirect_to request.referer rescue redirect_to sign_in_path
+    redirect_to sign_in_path
   end
 end
