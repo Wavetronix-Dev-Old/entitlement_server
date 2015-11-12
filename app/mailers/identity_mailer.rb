@@ -5,6 +5,6 @@ class IdentityMailer < ActionMailer::Base
     @identity = identity
     @title = "Password Reset"
 
-    mail(to: @identity.email, subject: "Your Wavetronix ID identity password was reset.")
+    mail to: identity.email, subject: "Your Wavetronix ID identity password was reset."
   end
 end

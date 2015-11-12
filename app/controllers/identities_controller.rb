@@ -41,7 +41,7 @@ class IdentitiesController < ApplicationController
   private
 
   def identity_params
-    params.require(:identity).permit(:first_name, :last_name, :email, :uid, :auth_token, :provider, :location, :description)
+    params.require(:identity).permit(:first_name, :last_name, :email, :uid, :auth_token, :provider, :location, :description, :password_reset_token, :password_reset_sent_at)
   end
 
   def user_params
