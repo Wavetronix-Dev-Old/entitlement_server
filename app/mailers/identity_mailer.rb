@@ -5,8 +5,8 @@ class IdentityMailer < ActionMailer::Base
     @identity = identity
     @title = "New Account Created for Entitlement Server"
 
-    # mail to: 'appsupport@wavetronix.com', subject: "A new account has been created for #{identity.first_name} #{identity.last_name} from #{identity.location}."
-    mail to: 'ehuntsman@wavetronix.com', subject: "A new account has been created for #{identity.first_name} #{identity.last_name} from #{identity.location}."
+    mail to: 'appsupport@wavetronix.com', subject: "A new Entitlement Server account has been created"
+    # mail to: 'ehuntsman@wavetronix.com', subject: "A new Entitlement Server account has been created" #for testing only
   end
 
   def password_reset(identity)
