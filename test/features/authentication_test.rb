@@ -7,6 +7,7 @@ feature "Authentication" do
   end
 
   scenario "create a new account and log out" do
+    ActionMailer::Base.deliveries = []
     visit sign_in_path
     click_link nil, href: new_identity_path
     fill_in :first_name, with: "Bob"
@@ -22,6 +23,8 @@ feature "Authentication" do
     # turn back to true
     OmniAuth.config.test_mode = true
     page.must_have_content "Bob Billy"
+    last_email = ActionMailer::Base.deliveries.last
+    last_email.must_include '@wavetronix.com'
     click_link nil, href: sign_out_path
     page.must_have_content "Sign in"
   end

@@ -28,11 +28,17 @@ module Identities
       @identity = Identity.find_by_password_reset_token!(params[:id])
       if @identity.password_reset_sent_at < 2.hours.ago
         redirect_to new_identities_password_reset_path, :alert => "Password reset has expired."
-      elsif @identity.update_attributes(params[:identity])
+      elsif @identity.update_attributes(identity_params)
         redirect_to root_path, :notice => "Password successfully reset."
       else
         render :edit
       end
+    end
+
+    private
+
+    def identity_params
+      params.require(:identity).permit(:password, :password_confirmation)
     end
 
   end

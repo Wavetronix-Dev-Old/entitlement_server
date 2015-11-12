@@ -9,6 +9,8 @@ class IdentitiesController < ApplicationController
 
   def new
     @identity = env["omniauth.identity"]
+    identity = Identity.find_by_email(params[:email])
+    identity.send_new_account
   end
 
   def edit

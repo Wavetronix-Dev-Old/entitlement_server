@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   namespace :identities do
     resources :password_resets
+    resources :new_accounts, only: [:edit]
   end
 
   root to: "collections#index"
