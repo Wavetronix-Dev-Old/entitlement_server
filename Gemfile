@@ -15,7 +15,6 @@ gem 'pg'
 gem 'pundit'
 gem 'rolify'
 gem 'sass-rails', '~> 5.0'
-gem 'tunnelss'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
