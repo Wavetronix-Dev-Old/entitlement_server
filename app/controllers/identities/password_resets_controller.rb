@@ -12,7 +12,8 @@ module Identities
 
     def create
       identity = Identity.find_by_email(params[:email])
-      identity.send_password_reset if identity
+      # identity.send_password_reset if identity
+      IdentityMailer.password_reset(identity).delivery_now if identity
       redirect_to root_path, :notice => "We sent password reset instructions to the email address provided."
     end
 
