@@ -2,13 +2,14 @@ require "test_helper"
 
 describe IdentitiesController do
   let(:user) { Factory :user }
+  let(:identity) { Factory :identity }
 
   before do
     sign_in user
   end
 
   it "gets show" do
-    get :show, id: user
+    get :show, id: identity
     must_respond_with :success
   end
 

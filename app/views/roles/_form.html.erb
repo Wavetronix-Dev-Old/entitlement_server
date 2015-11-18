@@ -27,7 +27,7 @@
       <%= f.submit class: 'button radius expand' %>
     </div>
     <div class="medium-6 columns">
-      <% unless params[:action] == 'new' %>
+      <% unless params[:action] == 'new' || params[:action] == 'create' %>
         <%= link_to 'Delete Role', role_path(@role), class: 'button radius expand delete', data: { confirm: %(Are you sure you want to delete "#{@role.name}?" This cannot be undone.) }, method: :delete %>
       <% end %>
     </div>

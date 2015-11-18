@@ -2,6 +2,8 @@ require 'test_helper'
 
 describe UsersController do
   let(:user) { Factory :user }
+  let(:judge) { Factory :role, name: 'judge' }
+  let(:jury) { Factory :role, name: 'jury' }
 
   before do
     sign_in user
@@ -24,14 +26,15 @@ describe UsersController do
       end
 
       it "updates a user" do
-        patch :update, id: user, user: { name: 'spy' }
+        patch :update, id: user, user: { role_ids: ["#{judge.id}"] }
         user.reload
-        user.name.must_equal 'spy'
+        user.has_role?(:judge).must_equal true
         flash[:notice].wont_be_nil
         must_redirect_to users_path
       end
 
       it "renders edit on error" do
+        skip 'There are no validations to fail by checking or unchecking roles'
         patch :update, id: user, user: { name: '' }
         user.reload
         user.name.must_equal 'agent'
