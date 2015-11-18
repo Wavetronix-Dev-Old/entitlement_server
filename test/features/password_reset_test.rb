@@ -1,7 +1,7 @@
 require "test_helper"
 
 feature "PasswordResets" do
-  scenario "emails user identity when requesting password reset" do
+  scenario "emails identity when requesting password reset" do
     identity = Factory(:identity)
     ActionMailer::Base.deliveries = []
     visit sign_in_path

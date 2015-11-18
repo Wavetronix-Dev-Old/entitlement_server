@@ -12,6 +12,9 @@ class Identity < OmniAuth::Identity::Models::ActiveRecord
 
   after_create :send_new_account_email
 
+  after_destroy :delete_user
+  after_update :update_user
+
   def send_new_account_email
     IdentityMailer.new_account(self).deliver_now
   end
@@ -28,6 +31,21 @@ class Identity < OmniAuth::Identity::Models::ActiveRecord
     begin
       self[column] = SecureRandom.urlsafe_base64
     end while Identity.exists?(column => self[column])
+  end
+
+  def delete_user
+    user = User.find_by(uid: id)
+    user.destroy
+  end
+
+  def update_user
+    user = User.find_by(uid: id)
+    user.first_name = first_name
+    user.last_name = last_name
+    user.email = email
+    user.location = location
+    user.description = description
+    user.save
   end
 
 end

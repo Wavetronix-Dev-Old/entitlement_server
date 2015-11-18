@@ -21,9 +21,6 @@ class User < ActiveRecord::Base
     if Mail::Address.new(self.email).domain == "wavetronix.com"
       self.add_role :wavetronix_employee
       self.save
-    else
-      self.add_role :user
-      self.save
     end
   end
 

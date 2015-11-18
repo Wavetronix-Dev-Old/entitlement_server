@@ -27,8 +27,8 @@ class UsersController < ApplicationController
   def destroy
     authorize @user
     @user.destroy
-    @identity = Identity.find(params[:id]) if params[:id]
-    @identity.destroy
+    # @identity = Identity.find(params[:id]) if params[:id]
+    # @identity.destroy
     redirect_to users_path
   end
 
