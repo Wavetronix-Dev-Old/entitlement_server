@@ -23,8 +23,6 @@ feature "Authentication" do
     # turn back to true
     OmniAuth.config.test_mode = true
     page.must_have_content "Bob Billy"
-    last_email = ActionMailer::Base.deliveries.last
-    last_email.must_include '@wavetronix.com'
     click_link nil, href: sign_out_path
     page.must_have_content "Sign in"
   end
