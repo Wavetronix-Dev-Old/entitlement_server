@@ -13,7 +13,6 @@ class Identity < OmniAuth::Identity::Models::ActiveRecord
   after_create :send_new_account_email
 
   after_destroy :delete_user
-  after_update :update_user
 
   def send_new_account_email
     IdentityMailer.new_account(self).deliver_now

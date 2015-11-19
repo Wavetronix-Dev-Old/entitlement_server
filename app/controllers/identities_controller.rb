@@ -15,6 +15,7 @@ class IdentitiesController < ApplicationController
 
   def update
     if @identity.update(identity_params)
+      @identity.update_user
       redirect_to users_path, notice: %(Updated "#{@identity.first_name}" successfully.)
     else
       render :edit
