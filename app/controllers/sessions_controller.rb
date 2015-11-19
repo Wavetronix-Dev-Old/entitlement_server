@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       redirect_to uri
     else
       # redirect_to identity_path(user.uid)
-      redirect_to landing_path
+      redirect_to root_path
     end
   end
 

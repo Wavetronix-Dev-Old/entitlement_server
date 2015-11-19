@@ -1,0 +1,11 @@
+@import "foundation_and_overrides";
+@import "globals/all";
+
+.home-help-divider {
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  height: 100%;
+  @media only screen and (max-width: 40em) {
+    border: none;
+  }
+}

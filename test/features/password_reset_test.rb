@@ -1,6 +1,6 @@
 require "test_helper"
 
-feature "PasswordResets" do
+feature "Password Resets" do
   scenario "emails identity when requesting password reset" do
     identity = Factory(:identity)
     ActionMailer::Base.deliveries = []
