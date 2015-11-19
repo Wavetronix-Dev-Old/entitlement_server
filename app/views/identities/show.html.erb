@@ -5,3 +5,11 @@
 </h2>
 <p><strong>Company:</strong> <%= @identity.location%></p>
 <p><strong>Job Title:</strong> <%= @identity.description %></p>
+
+<ul class="inline-list">
+  <li><%= link_to image_tag('apple_app_store.png'), 'https://itunes.apple.com/us/app/wavetronix/id840962745?ls=1&mt=8', target: '_blank' %></li>
+  <li><%= link_to image_tag('google_play.png'), 'https://play.google.com/store/apps/details?id=com.wavetronix.wavetronix' %></li>
+  <li><%= link_to image_tag('windows_store.png'), 'http://apps.microsoft.com/windows/app/wavetronix/5f652365-b23e-494e-b92a-1ea4155fbc0b', target: '_blank' %></li>
+</ul>
+
+<%= button_to "Wavetronix App Page", 'http://www.wavetronix.com/en/products/wavetronix_app', class: "button radius", target: '_blank' %>

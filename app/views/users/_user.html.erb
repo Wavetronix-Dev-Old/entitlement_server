@@ -1,33 +1,32 @@
 <div class="row">
-  <div class="medium-3 columns">
+  <%= link_to edit_user_path(user), title: %(Edit "#{user.name}") do %>
+  <div class="medium-5 columns">
+    <strong><%= user.name %></strong><br/>
     <%= user.email %>
   </div>
-  <div class="medium-4 columns">
-    <%= user.location %> <br/>
-    <%= user.description %>
-  </div>
   <div class="medium-2 columns">
-    <% user.roles.each do |role| %>
-      <span class="secondary label radius">
-        <%= role.name %>
-      </span>
-    <% end %>
-  </div>
-
-  <div class="medium-3 columns text-right">
-    <ul class="button-group radius">
-      <li>
-        <%= link_to edit_user_path(user), class: 'button tiny', title: %(Edit "#{user.name}") do %>
-          <span class="fa fa-edit"></span>
-          Edit
-        <% end %>
-      </li>
-      <li>
-        <%= link_to user_path(user), class: "button tiny delete", data: { confirm: %(Are you sure you want to delete "#{user.name}?" This cannot be undone.) }, method: :delete, title: %(Delete "#{user.name}") do %>
-          <span class="fa fa-trash-o"></span>
-          Delete
-        <% end %>
-      </li>
+    <ul class="inline-list show-for-medium-up">
+      <% user.roles.each do |role| %>
+        <li class="secondary label radius">
+          <%= role.name %>
+        </li>
+      <% end %>
     </ul>
   </div>
+  <div class="large-2 columns hide-for-medium-down">
+    <%= user.location %>
+  </div>
+  <div class="medium-5 large-3 columns">
+    <span class="hide-for-large-up"><%= user.location %> <br/></span>
+    <span class="hide-for-small"><%= user.description %></span>
+    <ul class="inline-list show-for-small">
+      <% user.roles.each do |role| %>
+        <li class="secondary label radius">
+          <%= role.name %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
 </div>
+

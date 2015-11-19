@@ -14,7 +14,9 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :amazon_ses
+  config.action_mailer.default_url_options = { :host => "des.wavetronix.dev" }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -48,4 +50,5 @@ Rails.application.configure do
   # Add Rack::LiveReload to the bottom of the middleware stack with the
   # default options.
   config.middleware.use Rack::LiveReload, no_swf: true
+
 end

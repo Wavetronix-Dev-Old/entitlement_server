@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   include Authentication
   rolify
+  after_create :assign_initial_role
 
   validates :uid,
             :provider,
@@ -14,6 +15,13 @@ class User < ActiveRecord::Base
 
   def to_param
     "#{id}-#{name.parameterize}"
+  end
+
+  def assign_initial_role
+    if Mail::Address.new(self.email).domain == "wavetronix.com"
+      self.add_role :wavetronix_employee
+      self.save
+    end
   end
 
 end

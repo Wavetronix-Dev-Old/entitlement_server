@@ -7,3 +7,21 @@
   border-bottom: 1px solid $aluminum;
   color: $aluminum;
 }
+
+.div-list {
+  a {
+    text-decoration: none;
+    color: $jet;
+  }
+  .row {
+    padding-top: 5px;
+    border-bottom: 1px solid $smoke;
+    :hover {
+      color: $aluminum;
+    }
+  }
+  .row:nth-child(even) {
+    background: $snow;
+  }
+}
+
