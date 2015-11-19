@@ -10,13 +10,7 @@ class Identity < OmniAuth::Identity::Models::ActiveRecord
                     uniqueness: { case_sensitive: false },
                     format: { with: /\A^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$\Z/i }
 
-  after_create :send_new_account_email
-
   after_destroy :delete_user
-
-  def send_new_account_email
-    IdentityMailer.new_account(self).deliver_now
-  end
 
   ## PASSWORD RESET METHODS
   def send_password_reset

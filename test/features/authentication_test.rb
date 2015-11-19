@@ -22,6 +22,8 @@ feature "Authentication" do
       click_button "Create a new account"
     # turn back to true
     OmniAuth.config.test_mode = true
+    last_email = ActionMailer::Base.deliveries.last
+    last_email.to.must_include "appsupport@wavetronix.com"
     page.must_have_content "Bob Billy"
     click_link nil, href: sign_out_path
     page.must_have_content "Sign in"

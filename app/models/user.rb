@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include Authentication
   rolify
-  after_create :assign_initial_role
+  after_create :assign_initial_role, :send_new_account_email
 
   validates :uid,
             :provider,
@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
 
   def to_param
     "#{id}-#{name.parameterize}"
+  end
+
+  def send_new_account_email
+    UserMailer.new_account(self).deliver_now
   end
 
   def assign_initial_role
