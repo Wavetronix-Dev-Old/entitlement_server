@@ -18,10 +18,14 @@ describe IdentitiesController do
     must_respond_with :success
   end
 
-  it "handles authentication failures" do
-    get :authentication_failure, message: "invalid_credentials"
-    must_respond_with :redirect
-    flash[:alert].wont_be_nil
+  it "updates an identity and cooresponding user" do
+    patch :update, id: identity, identity: { first_name: 'Zoey' }
+    identity.reload
+    identity.first_name.must_equal 'Zoey'
+    user.reload
+    user.first_name.must_equal 'Zoey'
+    flash[:notice].wont_be_nil
+    must_redirect_to users_path
   end
 
   it "deletes an identity" do
@@ -42,17 +46,10 @@ describe IdentitiesController do
     must_redirect_to sign_in_path
   end
 
-  it "updates an identity" do
-    patch :update, id: identity, identity: { first_name: 'Zoey' }
-    identity.reload
-    identity.first_name.must_equal 'Zoey'
-    flash[:notice].wont_be_nil
-    must_redirect_to users_path
+  it "handles authentication failures" do
+    get :authentication_failure, message: "invalid_credentials"
+    must_respond_with :redirect
+    flash[:alert].wont_be_nil
   end
-
-  it "updates cooresponding user" do
-  end
-
-
 
 end

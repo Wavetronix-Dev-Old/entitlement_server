@@ -12,6 +12,8 @@ class Identity < OmniAuth::Identity::Models::ActiveRecord
 
   after_destroy :delete_user
 
+  after_create :send_new_account_email
+
   ## PASSWORD RESET METHODS
   def send_password_reset
     generate_token :password_reset_token
@@ -39,6 +41,10 @@ class Identity < OmniAuth::Identity::Models::ActiveRecord
     user.location = location
     user.description = description
     user.save
+  end
+
+  def send_new_account_email
+    IdentityMailer.new_account(self).deliver_now
   end
 
 end

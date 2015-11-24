@@ -28,4 +28,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  def account_success
+    #redirect needs to be outside of model
+  end
+
 end

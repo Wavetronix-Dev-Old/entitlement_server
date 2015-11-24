@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :identities, :roles, :users, :collections
 
-  get "/confirmation", to: "home#confirmation"
+  get "/confirmation", to: "home#confirmation", as: :confirmation
 
   namespace :identities do
     resources :password_resets
