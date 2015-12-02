@@ -1,0 +1,5 @@
+<h2>A new account has been created!</h2>
+<p><%= @user.first_name %> <%= @user.last_name %> has created a new account on the Entitlement Server.</p>
+<p>Company: <%= @user.location %><br/>
+Job Title: <%= @user.description %></p>
+<%= link_to "Click here to assign them a role.", edit_user_url(@user.id) %>

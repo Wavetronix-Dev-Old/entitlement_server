@@ -2,10 +2,23 @@
 @import "globals/all";
 
 .home-help-divider {
-  border-right: 1px solid black;
-  border-left: 1px solid black;
+  border-right: 1px solid $iron;
+  border-left: 1px solid $iron;
   height: 100%;
   @media only screen and (max-width: 40em) {
     border: none;
   }
+}
+
+.confirm-greeting {
+  padding-top: 25px;
+}
+
+.welcome-back-greeting {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.app-links li {
+  margin: 5px 0px;
 }

@@ -34,7 +34,7 @@ class IdentitiesController < ApplicationController
   private
 
   def identity_params
-    params.require(:identity).permit(:first_name, :last_name, :email, :uid, :auth_token, :provider, :location, :description)
+    params.require(:identity).permit(:first_name, :last_name, :email, :id, :auth_token, :provider, :location, :description)
   end
 
   def find_identity

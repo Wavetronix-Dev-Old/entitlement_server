@@ -12,12 +12,13 @@ class SessionsController < ApplicationController
     }
     uri = session[:referer]
     session[:referer] = nil
-    if uri
-      redirect_to uri
+    redirect_path = root_path
+    if user.created_at > 1.minute.ago
+      redirect_path = confirmation_path
     else
-      # redirect_to identity_path(user.uid)
-      redirect_to root_path
+      redirect_path = uri if uri
     end
+    redirect_to redirect_path
   end
 
   def destroy

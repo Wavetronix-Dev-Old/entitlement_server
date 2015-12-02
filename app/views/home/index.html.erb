@@ -1,15 +1,15 @@
 <% content_for :title, 'Home Page' %>
 
 <div class="row text-center">
-  <div class="medium-8 small-centered columns">
-    <h2>Welcome back <%= current_user.first_name %></h2>
+  <div class="medium-8 small-centered columns welcome-back-greeting">
+    <h1>Welcome back, <%= current_user.first_name %></h1>
   </div>
 </div>
 <div class="row">
   <div class="medium-4 columns">
     <h3>Download the app</h3>
     <p>If you have not downloaded the app, please do so by visitng the app store of your choice:
-    <ul class="no-bullet">
+    <ul class="no-bullet app-links">
       <li><%= link_to image_tag('apple_app_store.png'), 'https://itunes.apple.com/us/app/wavetronix/id840962745?ls=1&mt=8', target: '_blank' %></li>
       <li><%= link_to image_tag('google_play.png'), 'https://play.google.com/store/apps/details?id=com.wavetronix.wavetronix' %></li>
       <li><%= link_to image_tag('windows_store.png'), 'http://apps.microsoft.com/windows/app/wavetronix/5f652365-b23e-494e-b92a-1ea4155fbc0b', target: '_blank' %></li>
@@ -26,14 +26,19 @@
           <p>Click here for instructions on how to sign in to the app on your iOS device</p>
         </li>
       <% end %>
-      <li>
-        <h4>Droid</h4>
-        <p>Click here for instructions on how to sign in to the app on your android device</p>
-      </li>
-      <li>
-        <h4>Windows</h4>
-        <p>Click here for instructions on how to sign in to the app on your windows device</p>
-      </li>
+      <%= link_to nil do %>
+        <li>
+          <h4>Droid</h4>
+          <p>Click here for instructions on how to sign in to the app on your android device</p>
+        </li>
+      <% end %>
+      <%= link_to nil do %>
+        <li>
+          <h4>Windows</h4>
+          <p>Click here for instructions on how to sign in to the app on your windows device</p>
+        </li>
+      <% end %>
+    </ul>
   </div>
   <hr class="show-for-small"/>
   <div class="medium-4 columns">
