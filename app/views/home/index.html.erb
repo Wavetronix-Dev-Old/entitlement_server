@@ -2,13 +2,26 @@
 
 <div class="row text-center">
   <div class="medium-8 small-centered columns welcome-back-greeting">
-    <h1>Welcome back, <%= current_user.first_name %></h1>
+    <% if current_user.created_at > 1.minute.ago %>
+        <div class="confirm-greeting">
+          <i class="fa fa-thumbs-up fa-5x"></i>
+          <h1>Success!</h1>
+          <h2>Thank you <%= current_user.first_name %> for creating an account for the Wavetronix app.</h2>
+          <p>If you are a distributor or employee, your new account will provide you with exclusive access to articles, brochures, and publications from Wavetronix.</p>
+        </div>
+    <% else %>
+      <h1>Welcome back, <%= current_user.first_name %></h1>
+    <% end %>
   </div>
 </div>
 <div class="row">
   <div class="medium-4 columns">
-    <h3>Download the app</h3>
-    <p>If you have not downloaded the app, please do so by visitng the app store of your choice:
+    <% if current_user.created_at > 1.minute.ago %>
+      <h3>What next</h3>
+    <% else %>
+      <h3>Download the app</h3>
+    <% end %>
+    <p>If you have not downloaded the app, please do so by visiting the app store of your choice:
     <ul class="no-bullet app-links">
       <li><%= link_to image_tag('apple_app_store.png'), 'https://itunes.apple.com/us/app/wavetronix/id840962745?ls=1&mt=8', target: '_blank' %></li>
       <li><%= link_to image_tag('google_play.png'), 'https://play.google.com/store/apps/details?id=com.wavetronix.wavetronix' %></li>
