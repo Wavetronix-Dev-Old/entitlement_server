@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   after_action :verify_authorized
 
   def index
-    @users = User.order("id").all
+    @users = User.order("last_name, first_name ASC").all
     authorize :user
   end
 
