@@ -8,6 +8,11 @@ addons:
   code_climate:
     repo_token: 212a4731d9077e8b4227d940d95693c4c8fcfd5cee2f70623aab445206f05bdf
   postgresql: '9.4'
+
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+
 before_script:
   - psql -c "create database travis_ci_test;" -U postgres
   - cp config/database.travis.yml config/database.yml

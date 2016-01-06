@@ -5,7 +5,7 @@ feature "Password Resets" do
     identity = Factory(:identity)
     ActionMailer::Base.deliveries = []
     visit sign_in_path
-    click_link "Forget your password"
+    click_link "Forgot your password"
     fill_in "Email", :with => identity.email
     click_button "Next"
     page.must_have_content "sent password reset"
