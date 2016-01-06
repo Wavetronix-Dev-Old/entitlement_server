@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
             :last_name,
             :email, presence: true
 
+  scope :has_role, lambda{|role| includes(:roles).where(:roles => { :name => role})}
+
   def name
     %W[#{first_name} #{last_name}].join(" ")
   end

@@ -3,7 +3,12 @@ class UsersController < ApplicationController
   after_action :verify_authorized
 
   def index
-    @users = User.order("id").all
+    @roles = Role.all
+    if params[:q]
+      @users = User.has_role params[:q]
+    else
+      @users = User.order("last_name, first_name ASC").all
+    end
     authorize :user
   end
 

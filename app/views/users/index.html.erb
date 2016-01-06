@@ -1,6 +1,19 @@
 <% content_for :title, "Users" %>
 <h1>Users</h1>
 
+
+<ul class="inline-list">
+  <li>Filter by role: <br/></li>
+  <% @roles.each do |role| %>
+    <%= link_to users_path(q: role.name) do %>
+      <li class="secondary label radius"><%= role.name %></li>
+    <% end %>
+  <% end %>
+  <%= link_to users_path do %>
+    <li class="secondary label radius"><%= "all roles" %></li>
+  <% end %>
+</ul>
+
 <div class="row hide-for-small div-header">
   <div class="medium-5 large-5 columns">
     name
@@ -16,6 +29,11 @@
   </div>
 </div>
 
-<div class="div-list">
-  <%= render @users %>
-</div>
+
+<%= render @users %>
+
+
+
+
+
+
